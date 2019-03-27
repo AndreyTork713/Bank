@@ -42,14 +42,25 @@ namespace BankLibrary
             _id = ++counter;
         }
 
-        public void Put(decimal sum)
+        //Текущая сумма на счету
+        public decimal CurrentSum
         {
-            throw new NotImplementedException();
+            get { return _sum; }
         }
 
-        public void Withdraw(decimal sum)
+        public int Percentage { get { return _percentage; } }
+
+        public int ID { get { return _id; } }
+
+        //****** ВЫЗОВ СОБЫТИЙ ******
+
+        private void CallEvent(AccountEventArgs e, AccountStateHandler handler)
         {
-            throw new NotImplementedException();
+            if (handler != null && e != null)
+            {
+                handler(this, e);
+            }
         }
+        
     }
 }
