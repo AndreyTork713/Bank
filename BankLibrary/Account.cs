@@ -61,6 +61,26 @@ namespace BankLibrary
                 handler(this, e);
             }
         }
-        
+        //Вызов отдельных событий. Для каждогособытия определяется свой виртуальный метод
+        protected virtual void OnOpen(AccountEventArgs e)
+        {
+            CallEvent(e, Opened);
+        }
+
+        protected virtual void OnWithdrawed(AccountEventArgs e)
+        {
+            CallEvent(e, Withdrawed);
+        }
+
+        protected virtual void OnAdded(AccountEventArgs e)
+        {
+            CallEvent(e, Added);
+        }
+
+        protected virtual void OnClosed(AccountEventArgs e)
+        {
+            CallEvent(e, Closed);
+        }
+
     }
 }
